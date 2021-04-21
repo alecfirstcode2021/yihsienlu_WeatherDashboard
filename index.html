@@ -2,54 +2,57 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!-- title-->
     <title>Weather Dashboard</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+    crossorigin="anonymous" />
+ 
+  <link
+    href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap"
+    rel="stylesheet" />
+  
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
     <link rel="stylesheet" href="./assets/styles.css">
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous"
+  ></script>
 </head>
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/d3bce829f3.js" crossorigin="anonymous"></script>
-    <!-- Start HTML Body -->
 
-    <div class="container-fluid">
+    <header  class="jumbotron jumbotron-fluid py-3">
         <div class="card">
             <div class="card-body text-center bg-dark text-white">
                 <h1>Weather Dashboard</h1>
             </div>
         </div>
-
-        <!-- This is a container-->
-        <div class="container">
+    </header>
+        <main class="container">
             <div class="row">
                 <div class="col">
                     <div class="card-body text-center">
-                        <!-- Search input goes here -->
+                        <!-- Search input -->
 
                         <div class="card" style="width: 18rem;">
                             <div class="card-body bg-light">
                                 <h6 class="card-subtitle mb-2 text-muted">Search For A City</h6>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control searchInput" placeholder="Enter City Name"
+                                    <input id="city-search" type="text" class="form-control searchInput" placeholder="Enter City Name"
                                         aria-label="Recipient's username" aria-describedby="button-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary bg-primary searchButton" type="button"
-                                            id="button-addon2"><i class="fas fa-search"></i></button>
-                                    </div>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button" id="search-button">
+                                                <i class="fas fa-search"></i>
+                                            </button>
+                                        </div>
                                 </div>
 
                                 <ul class="list-group">
@@ -59,20 +62,27 @@
                         </div>
                     </div>
                 </div>
-                <!-- Appends current weather forecast-->
-                <div class="col mt-4 mr-5">
-                    <div class="card currentCard pb-2 pt-1">
-                        <h5 class="card-title mt-2 text-center">Current Forecast</h5>
-                    </div>
+                  <!-- Current Weather -->
+            <div class="col-12 col-md-9">
+                <div id="current-conditions-card" class="card border-dark mb-2">
+                    <h3 id="city-name" class="city-name align-middle">Current City</h3>
+                    <img id="current-pic" src="placeholder" alt="">
+                    <p id="temperature" class="lead ml-2">Temp:</p>
+                    <p id="wind-speed" class="lead ml-2">Wind:</p>
+                    <p id="humidity"class="lead ml-2">Humidity:</p>
+                    <p id="UV-index" class="lead ml-2">UV Index: <span id="uv-span"></span></p>
                 </div>
                 <div class="row">
                     <div class="col mt-4">
                         <div class="card pb-5 fiveDayCard pl-5">
-                            <!-- Appends 5 day forecast-->
-                            <h5 class="card-title mt-2 mr-5">5-Day Forecast </h5>
+                            <!-- 5 day forecast-->
+                            <h5 class="card-title mt-2 mr-5">Five-Day Forecast </h5>
                             <div class="row">
-                                <div class="col fiveDayOne">
-                                </div>
+                                <div class="card forecast-div text-white bg-primary my-3 " style="width: 18rem;"></div>
+                                <div class="card forecast-div text-white bg-primary my-3 " style="width: 18rem;"></div>
+                                <div class="card forecast-div text-white bg-primary my-3 " style="width: 18rem;"></div>
+                                <div class="card forecast-div text-white bg-primary my-3 " style="width: 18rem;"></div>
+                                <div class="card forecast-div text-white bg-primary my-3 " style="width: 18rem;"></div>
 
                             </div>
 
@@ -81,8 +91,10 @@
                 </div>
             </div>
         </div>
+        <button class="btn btn-primary mb-3" type="button" id="clear-history">Clear history</button>
+        <form id="history"></form>
     </div>
-    <!-- JS and Jquery scripts -->
+        </main>
     <script src="./script.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
