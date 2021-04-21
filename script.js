@@ -108,7 +108,6 @@ function getcurrentWeather(cityName) {
         clearEl.addEventListener("click",function() {
             searchRecord = [];
             rendersearchRecord();
-            location.reload();
         })
     
         function ktof(K) {
